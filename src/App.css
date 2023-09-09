@@ -1,0 +1,95 @@
+body {
+  font-family: "Roboto", sans-serif;
+  color: #0c0c0c;
+  background-color: #ffffff;
+  font-size: larger;
+}
+
+.layout_padding {
+  padding: px 0;
+}
+
+.layout_padding2 {
+  padding: 45px 0;
+}
+
+.layout_padding2-top {
+  padding-top: 45px;
+}
+
+.layout_padding2-bottom {
+  padding-bottom: 45px;
+}
+
+.layout_padding-top {
+  padding-top: 75px;
+}
+
+.layout_padding-bottom {
+  padding-bottom: 75px;
+}
+#abheader {
+  font-size: small;
+  margin-bottom: 10px;
+  margin-top: -17px;
+}
+#imgHeader {
+  margin-top: -17px;
+  margin-bottom: -10px;
+}
+.custom_heading-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.custom_heading-container h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.custom_heading-container hr {
+  width: 250px;
+  border: none;
+  height: 1.5px;
+  background-color: #0000ff;
+  margin: 0 5px 0.5rem 5px;
+}
+
+.header_section {
+  background-color: #350c5f;
+  padding: 10px 0;
+}
+
+.header_section .container-fluid {
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+#navHover:hover {
+  background-color: tomato;
+}
+
+.btn,
+.btn:focus {
+  outline: none !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#footer {
+  background-color: #350c5f;
+}
