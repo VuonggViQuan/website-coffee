@@ -28,20 +28,20 @@ class Login extends React.Component {
                             alt=""
                             style={{ width: "35px" }}
                           />
-                          <span className="h1 fw-bold mb-0"> Nhóm 7 </span>
+                          <span className="h1 fw-bold mb-0"> Coffee </span>
                         </div>
                         <h3
                           className="fw-normal mb-3 pb-3 text-danger"
                           style={{ letterSpacing: 1 }}
                         >
-                          <b>Login</b>
+                          <b>Đăng nhập</b>
                         </h3>
                         <div className="form-outline mb-4">
                           <label
                             className="form-label"
                             htmlFor="form2Example17"
                           >
-                            Email address
+                            Tên đăng nhập
                           </label>
                           <input
                             type="email"
@@ -54,7 +54,7 @@ class Login extends React.Component {
                             className="form-label"
                             htmlFor="form2Example27"
                           >
-                            Password
+                            Mật khẩu
                           </label>
                           <input
                             type="password"
@@ -62,13 +62,13 @@ class Login extends React.Component {
                             className="form-control form-control-lg"
                           />
                         </div>
-                        <div className="pt-1 mb-4 row">
+                        <div className="my-2">
                           <button
-                            className="btn btn-dark btn-lg btn-block col-2"
+                            className="btn btn-dark btn-lg btn-block col-3"
                             type="button"
                           >
                             <NavLink to="/" className="text-white">
-                              Login
+                              Đăng nhập
                             </NavLink>
                           </button>
                         </div>

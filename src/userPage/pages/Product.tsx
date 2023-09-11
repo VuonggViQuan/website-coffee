@@ -1,4 +1,7 @@
-// import Item from "../components/Item";
+import datacf from "../database/data";
+import dataTs from "../database/dataTs";
+import dataDx from "../database/dataDx";
+import Item from "../components/Item";
 
 const Product1 = () => {
   return (
@@ -10,15 +13,17 @@ const Product1 = () => {
           <h5 className="text-white m-2">Coffe</h5>
         </div>
         <div className="row m-1">
-          {/* {datacf.productData.map((item, index) => {
-                    return(
-                        <Item img={item.img} 
-                        title={item.title} 
-                        desc={item.desc} 
-                        price={item.price}
-                        item={item}
-                         key={index}/>
-                    )})} */}
+          {datacf.productData.map((item, index) => {
+            return (
+              <Item
+                img={item.img}
+                title={item.title}
+                price={item.price}
+                item={item}
+                key={index}
+              />
+            );
+          })}
         </div>
       </section>
 
@@ -27,15 +32,17 @@ const Product1 = () => {
           <h5 className="text-white m-2">Trà Sữa</h5>
         </div>
         <div className="row m-1">
-          {/* {dataTs.productData.map((item, index) => {
-                    return(
-                        <Item img={item.img} 
-                        title={item.title} 
-                        desc={item.desc} 
-                        price={item.price}
-                        item={item}
-                         key={index}/>
-                    )})} */}
+          {dataTs.productData.map((item, index) => {
+            return (
+              <Item
+                img={item.img}
+                title={item.title}
+                price={item.price}
+                item={item}
+                key={index}
+              />
+            );
+          })}
         </div>
       </section>
 
@@ -44,15 +51,17 @@ const Product1 = () => {
           <h5 className="text-white m-2">Đá Xay</h5>
         </div>
         <div className="row m-1">
-          {/* {dataDx.productData.map((item, index) => {
-                    return(
-                        <Item img={item.img} 
-                        title={item.title} 
-                        desc={item.desc} 
-                        price={item.price}
-                        item={item}
-                         key={index}/>
-                    )})} */}
+          {dataDx.productData.map((item, index) => {
+            return (
+              <Item
+                img={item.img}
+                title={item.title}
+                price={item.price}
+                item={item}
+                key={index}
+              />
+            );
+          })}
         </div>
       </section>
     </>
