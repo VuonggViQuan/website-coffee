@@ -61,7 +61,7 @@ class Header extends React.Component {
                   <i className="bi bi-telephone"> 095900xxx</i>
                 </div>
                 <div className="col-auto">
-                  <i className="bi bi-envelope"> coffe@gmail.com </i>
+                  <i className="bi bi-envelope"> GrandCoffee@gmail.com </i>
                 </div>
               </div>
             </div>

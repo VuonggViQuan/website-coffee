@@ -1,10 +1,6 @@
 import React from "react";
 import "../css/home.css";
 
-import Slideshow from "../components/Slideshow";
-import img1 from "../images/background2.jpg";
-import img2 from "../images/background6.jpg";
-import img3 from "../images/background5.jpg";
 // import into from "../plugin/clip.mp4";
 // import Footer from '../components/Footer';
 // import img3 from './images/03.jpg';
@@ -12,16 +8,6 @@ import img3 from "../images/background5.jpg";
 // import img5 from './images/05.jpg';
 // import img6 from './images/06.jpg';
 
-const collection = [
-  { src: img1 },
-  { src: img2 },
-  { src: img3 },
-  // { src: img2, caption: "Caption two" },
-  // { src: img3, caption: "Caption three" },
-  // { src: img4, caption: "Caption four" },
-  // { src: img5, caption: "Caption five" },
-  // { src: img6, caption: "Caption six" },
-];
 const Home = () => {
   return (
     <>
@@ -41,12 +27,9 @@ const Home = () => {
           </h5>
           <p className="card-text">
             Lấy cảm hứng từ lối sống và văn hóa thưởng thức cafe của thành phố
-            “Hòn ngọc Viễn Đông”, coffeE Shop chính là sự kết hợp của nét xưa cũ
-            nhưng được cách điệu số “7” theo phong cách hiện đại.
+            “Hòn ngọc Viễn Đông”, GrandCoffee chính là sự kết hợp của nét xưa cũ
+            nhưng được cách điệu theo phong cách hiện đại.
           </p>
-          <button type="submit" className="card-Text btn btn-primary-50 ">
-            Xem Thêm
-          </button>
         </div>
       </div>
 
@@ -64,7 +47,7 @@ const Home = () => {
             </span>
             <span id="showCase">
               {/* <video src={video2}  controls autoPlay muted loop> </video> */}
-              <h1 className="title"> COFFEE Shop</h1>
+              <h1 className="title"> Grand Coffee</h1>
             </span>
           </div>
         </div>

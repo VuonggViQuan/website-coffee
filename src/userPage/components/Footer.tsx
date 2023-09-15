@@ -20,7 +20,7 @@ class Footer extends React.Component {
                 <p className="h5 text-white pb-2"> Liên hệ </p>
                 <p className="text-white">
                   <i className="bi bi-envelope text-white " /> Email:
-                  Coffee@gmail.com <br />
+                  GrandCoffee@gmail.com <br />
                   <i className="bi bi-geo-alt-fill text-white" />{" "}
                   <b>Representative:</b> 181 Cao Thắng, Phường 12, Quận 10,
                   Thành Phố Hồ Chí Minh. <br />
@@ -42,9 +42,9 @@ class Footer extends React.Component {
                 <p className="h5 text-white">Về Chúng Tôi</p>
                 <hr className="text-white bg-secondary" />
                 <p className="text-white">
-                  Coffee là chuỗi cà phê được lấy cảm hứng từ tinh hoa văn hoá
-                  và phong cách thưởng thức cà phê của Sài Gòn xưa pha lẫn với
-                  sự hiện đại và những phong vị mới mẻ của cuộc sống mới.
+                  GrandCoffee là chuỗi cà phê được lấy cảm hứng từ tinh hoa văn
+                  hoá và phong cách thưởng thức cà phê của Sài Gòn xưa pha lẫn
+                  với sự hiện đại và những phong vị mới mẻ của cuộc sống mới.
                 </p>
                 <div className="text-white pt-3">
                   <i className="fab bg-black p-2 bi bi-facebook" />
@@ -55,7 +55,7 @@ class Footer extends React.Component {
                   {" "}
                   <br />
                   Giấy chứng nhận Đăng kí kinh doanh số 031661*** do Sở kế hoạch
-                  và đầu tư. Thành phố Hồ Chí Minh cấp ngày 27/11/2063.
+                  và đầu tư. Thành phố Hồ Chí Minh cấp ngày 15/09/2023.
                 </p>
               </div>
 
@@ -64,7 +64,8 @@ class Footer extends React.Component {
                 <div className="container text-light text-opacity-50 ">
                   <div className="row">
                     <span>
-                      ©Nhóm 7 2022 | All rights reserved. Website by Grou.
+                      ©GrandCoffee 2023 | All rights reserved. Website by
+                      GrandCoffee.
                     </span>
                   </div>
                 </div>
