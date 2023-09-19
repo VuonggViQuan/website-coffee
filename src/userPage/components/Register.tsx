@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 
-class Login extends React.Component {
+class Register extends React.Component {
   render() {
     return (
       <section className="" style={{ backgroundColor: "#612f3a" }}>
@@ -34,54 +34,51 @@ class Login extends React.Component {
                           className="fw-normal mb-3 pb-3 text-danger"
                           style={{ letterSpacing: 1 }}
                         >
-                          <b>Đăng nhập</b>
+                          <b>Đăng ký</b>
                         </h3>
                         <div className="form-outline mb-4">
-                          <label
-                            className="form-label"
-                            htmlFor="form2Example17"
-                          >
-                            Tên đăng nhập
-                          </label>
                           <input
                             type="email"
                             id="form2Example17"
                             className="form-control form-control-lg"
+                            placeholder="Tên đăng nhập"
                           />
                         </div>
-                        <div className="form-outline mb-4">
-                          <label
-                            className="form-label"
-                            htmlFor="form2Example27"
-                          >
-                            Mật khẩu
-                          </label>
+                        <div className="form-outline mb-4 text-secondary ">
+                          <input
+                            type="email"
+                            id="form2Example17"
+                            className="form-control form-control-lg"
+                            placeholder="Email"
+                          />
+                        </div>
+                        <div className="form-outline mb-4 text-secondary ">
                           <input
                             type="password"
                             id="form2Example27"
                             className="form-control form-control-lg"
+                            placeholder="Mật khẩu"
                           />
                         </div>
+                        <div className="form-outline mb-4 text-secondary ">
+                          <input
+                            type="password"
+                            id="form2Example27"
+                            className="form-control form-control-lg"
+                            placeholder="Nhập Lại Mật Khẩu"
+                          />
+                        </div>
+
                         <div className="my-2">
                           <button
                             className="btn btn-dark btn-lg btn-block col-3"
                             type="button"
                           >
                             <NavLink to="/" className="text-white">
-                              Đăng nhập
+                              Đăng ký
                             </NavLink>
                           </button>
                         </div>
-                        <a className="small text-muted" href="#!">
-                          Forgot password?
-                        </a>{" "}
-                        <br />
-                        <p className="mb-5 pb-lg-2">
-                          Don't have an account?{" "}
-                          <a href="/register" className="text-primaty">
-                            Register here
-                          </a>
-                        </p>
                       </form>
                     </div>
                   </div>
@@ -95,4 +92,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default Register;

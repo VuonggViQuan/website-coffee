@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Product from "./pages/Product";
 import About from "./pages/About";
 import Login from "./components/Login";
+import Register from "./components/Register";
 
 const routes = [
   { path: "", component: <Home /> },
@@ -15,5 +16,6 @@ const routes = [
   { path: "contact", component: <Contact /> },
   { path: "about", component: <About /> },
   { path: "login", component: <Login /> },
+  { path: "register", component: <Register /> },
 ];
 export default routes;

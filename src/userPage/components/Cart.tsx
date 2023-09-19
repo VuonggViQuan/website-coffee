@@ -16,6 +16,7 @@ const Cart = () => {
     removeItem,
     emptyCart,
   } = useCart();
+
   if (isEmpty)
     return (
       <h1 className="text-center text-danger py-3" id="title">
@@ -48,7 +49,7 @@ const Cart = () => {
                     <button
                       className="btn btn-info col-2 m-1"
                       onClick={() =>
-                        updateItemQuantity(item.id, (item.quantity = -1))
+                        updateItemQuantity(item.id, item.quantity - 1)
                       }
                     >
                       -
@@ -56,7 +57,7 @@ const Cart = () => {
                     <button
                       className="btn btn-info col-2 m-2"
                       onClick={() =>
-                        updateItemQuantity(item.id, (item.quantity = +1))
+                        updateItemQuantity(item.id, item.quantity + 1)
                       }
                     >
                       +

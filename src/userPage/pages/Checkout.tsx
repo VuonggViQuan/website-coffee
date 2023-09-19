@@ -130,15 +130,6 @@ const Checkout = () => {
                       defaultValue=""
                     />
                   </div>
-                  <div className="col-md-12">
-                    <label htmlFor="kh_cmnd">CMND</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="kh_cmnd"
-                      id=""
-                    />
-                  </div>
                 </div>
                 <h4 className="mb-3">Hình thức thanh toán</h4>
                 <div className="d-block my-3">
