@@ -19,18 +19,20 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", 'App\Http\Controllers\AdminHomeController@login') -> name("admin.login.home");
 
 
-
-
-
 Route::post("/admin/admins/authenticate", 'App\Http\Controllers\admin\AdminInformationController@authenticateUser') -> name("admin.admin.auth");
 
-Route::get("/admin/users", 'App\Http\Controllers\user\UserInformationController@getAll') -> name("admin.user.getall");
-Route::post("/admin/users/create", 'App\Http\Controllers\user\UserInformationController@createUser') -> name("admin.user.create");
-Route::get("/admin/user/cart", 'App\Http\Controllers\user\CartController@index') -> name("admin.user.cart");
-Route::post("/admin/user/cart/add/{id}", 'App\Http\Controllers\user\CartController@add') -> name("admin.user.cart.add");
+// Account
+Route::post("/user/register", "App\Http\Controllers\user\UserAccountInformationController@register") -> name("user.create.account");
+Route::post("/user/login", 'App\Http\Controllers\user\UserAccountInformationController@authenticate') -> name("user.account.auth");
+
+Route::get("/users", 'App\Http\Controllers\user\UserInformationController@getAll') -> name("admin.user.getall");
+Route::post("/users/create", 'App\Http\Controllers\user\UserInformationController@createUser') -> name("admin.user.create");
+Route::get("/user/cart", 'App\Http\Controllers\user\CartController@index') -> name("admin.user.cart");
+Route::post("/user/cart/add/{id}", 'App\Http\Controllers\user\CartController@add') -> name("admin.user.cart.add");
+
 
 Route::get("/user/products", 'App\Http\Controllers\user\UserProductController@index') -> name("user.products");
-
+Route::get("/user/product/{id}", 'App\Http\Controllers\user\UserProductController@showProduct') -> name("user.product.show");
 Route::middleware('auth') -> group(function() {
     Route::get("/admin/home", 'App\Http\Controllers\AdminHomeController@index') -> name("admin.home");
     Route::get("/admin/admins", 'App\Http\Controllers\admin\AdminInformationController@index') -> name('admin.admin.infor');
