@@ -1,28 +1,42 @@
-import React from "react";
+import { stringify } from "querystring";
+import React, { useEffect, useState } from "react";
 import { useCart } from "react-use-cart";
+import { json } from "stream/consumers";
 
 // import { NavLink } from "react-router-dom";
+import Cart from './Cart';
 
 const Item = (props: any) => {
   const { addItem } = useCart();
+  
+  const [product, setProduct] = useState([]);
 
+  const handleShowProduct = (id: any) => {
+
+    fetch("http://localhost:8000/user/product/" + id , {
+      method: "GET",
+      headers: {"Accept":"application/json","Content-Type": "application/json"}
+    }).then((rs) => rs.json())
+      .then((result) => setProduct(result));
+  }
   return (
     <>
       <div className="col-lg-3 mb-3 ">
         <div className="card p-0 overflow-hidden h-90 w-75  shadow">
-          <img src={props.img} className="card-img-top img-fluid" alt="" />
+          <img src= {require(`../drink/${props.img}`)} style={{ height: 250, }} className="card-img-top img-fluid" alt="drink" />
           <div className="card-body text-center">
-            <h5 className="card-title">{props.title}</h5>
+            <h5 className="card-title">{props.name}</h5>
             <h5 className="card-text">{props.price} vnd</h5>
-            <p className="card-text">{props.desc}</p>
-            <button
+            <p className="card-text">{props.description}</p>
+            <a
               className="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal2"
+              onClick={handleShowProduct}
+              href="/Cart"
             >
               Chi tiết sản phẩm
-            </button>
+            </a>
           </div>
+          
           <button
             className="btn btn-primary"
             onClick={() => addItem(props.item)}
@@ -32,7 +46,7 @@ const Item = (props: any) => {
             Thêm vào Giỏ Hàng
           </button>
 
-          {/* Modal */}
+     
           <div
             className="modal fade"
             id="exampleModal"
@@ -78,8 +92,7 @@ const Item = (props: any) => {
             </div>
           </div>
 
-          {/* Modal2 */}
-          <div
+          {/* <div
             className="modal fade col-auto"
             id="exampleModal2"
             tabIndex={-1}
@@ -143,7 +156,7 @@ const Item = (props: any) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
