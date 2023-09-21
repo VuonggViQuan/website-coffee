@@ -1,10 +1,31 @@
-import { NavLink } from "react-router-dom";
-import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
-class Login extends React.Component {
-  render() {
+export default function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const handleSubmit = (e: any) => {
+      e.preventDefault();
+      const userInformation = {email, password}
+      fetch("http://127.0.0.1:8000/user/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(userInformation)
+      }).then((rs) => {
+          console.log(rs);
+          // alert("Welcome to website!");
+          // navigate("/")
+      })
+      .catch(() => {
+        alert("Incorrect email or password! Please try again");
+        navigate("/login")
+      })
+
+    
+    }
     return (
-      <section className="" style={{ backgroundColor: "#612f3a" }}>
+      <section className="vh-100" style={{ backgroundColor: "#612f3a" }}>
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
@@ -20,7 +41,7 @@ class Login extends React.Component {
                   </div>
                   <div className="col-md-6 col-lg-7 d-flex align-items-center">
                     <div className="card-body p-4 p-lg-5 text-black">
-                      <form>
+                      <form method="post" onSubmit={handleSubmit}>
                         <div className="d-flex align-items-center mb-3 pb-1">
                           <img
                             src={require("../images/zyro-image.png")}
@@ -41,12 +62,14 @@ class Login extends React.Component {
                             className="form-label"
                             htmlFor="form2Example17"
                           >
-                            Tên đăng nhập
+                            Email
                           </label>
                           <input
+                            name="email"
                             type="email"
                             id="form2Example17"
                             className="form-control form-control-lg"
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
                         <div className="form-outline mb-4">
@@ -57,19 +80,22 @@ class Login extends React.Component {
                             Mật khẩu
                           </label>
                           <input
+                            name="password"
                             type="password"
                             id="form2Example27"
                             className="form-control form-control-lg"
+                            onChange={(e) => setPassword(e.target.value)}
                           />
                         </div>
                         <div className="my-2">
                           <button
                             className="btn btn-dark btn-lg btn-block col-3"
-                            type="button"
+                            type="submit"
                           >
-                            <NavLink to="/" className="text-white">
+                            Đăng Nhập
+                            {/* <NavLink to="/" className="text-white">
                               Đăng nhập
-                            </NavLink>
+                            </NavLink> */}
                           </button>
                         </div>
                         <a className="small text-muted" href="#!">
@@ -93,6 +119,6 @@ class Login extends React.Component {
       </section>
     );
   }
-}
 
-export default Login;
+
+// export default Login;
