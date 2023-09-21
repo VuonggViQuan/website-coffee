@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'member' => [
+            'driver' => 'session',
+            'provider' => 'user_account_infor',
+        ]
     ],
 
     /*
@@ -64,11 +68,15 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'user_account_infor' => [
+            'driver' => 'database',
+            'table' => 'user_account_infor',
+        ],
+          // 'user_account_infor' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\UserAccountInformation::class,
+        // ]
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
