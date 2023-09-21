@@ -2,13 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\Access\Authorizable;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class UserAccountInformation extends Model
 {
-    // use HasFactory;
+    // 'getAuthIdentifierName', 'getAuthIdentifier', 'getAuthPassword', 'getRememberToken', 'setRememberToken', 'getRememberTokenName
+    use HasFactory, HasApiTokens, Notifiable;
+   
+    protected $guard = "member";
     protected $table = "user_account_infor";
+
+
     public function getId() {
         return $this -> attributes['id'];
     }
