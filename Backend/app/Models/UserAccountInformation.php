@@ -14,10 +14,12 @@ class UserAccountInformation extends Model
 {
     // 'getAuthIdentifierName', 'getAuthIdentifier', 'getAuthPassword', 'getRememberToken', 'setRememberToken', 'getRememberTokenName
     use HasFactory, HasApiTokens, Notifiable;
-   
+
     protected $guard = "member";
     protected $table = "user_account_infor";
-
+    protected $hidden = [
+        "password", "remember_token",
+    ];
 
     public function getId() {
         return $this -> attributes['id'];
@@ -42,5 +44,11 @@ class UserAccountInformation extends Model
     }
     public function setPassword($password) {
         $this -> attributes['password'] = $password;
+    }
+    public function getToken() {
+        return $this -> attributeCastCache['remember_token'];
+    }
+    public function setToken($token) {
+        $this -> attributes['remember_token'] = $token;
     }
 }
