@@ -1,5 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import ResponseWrapper from './../services/responseWrapper';
+import { json } from "stream/consumers";
+import userService from "../services/userService";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -7,23 +10,35 @@ export default function Login() {
     const navigate = useNavigate();
     const handleSubmit = (e: any) => {
       e.preventDefault();
-      const userInformation = {email, password}
-      fetch("http://127.0.0.1:8000/user/login", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(userInformation)
-      }).then((rs) => {
-          console.log(rs);
-          // alert("Welcome to website!");
-          // navigate("/")
+      const userInformation = {email, password};
+      userService.login(email, password).then((res) => {   
+        // console.log(res.errorCode);
+        if(res.errorCode === 0) {
+          console.log(res.data);
+          alert("Login successfully!");
+          navigate("/")   
+        }else {
+          console.log(res)
+          alert("Wrong email or password! Please try again")
+        }
       })
-      .catch(() => {
-        alert("Incorrect email or password! Please try again");
-        navigate("/login")
-      })
-
+      // fetch("http://127.0.0.1:8000/user/login", {
+      //   method: "POST",
+      //   headers: {"Content-Type": "application/json"},
+      //   body: JSON.stringify(userInformation)
+      // }).then((rs) => {
+        
+      //     console.log(rs.json);
+      // })
+      // .catch(() => {
+      //   alert("Incorrect email or password! Please try again");
+      //   navigate("/login")
+      // })
     
+     
+
     }
+   
     return (
       <section className="vh-100" style={{ backgroundColor: "#612f3a" }}>
         <div className="container py-5 h-100">
