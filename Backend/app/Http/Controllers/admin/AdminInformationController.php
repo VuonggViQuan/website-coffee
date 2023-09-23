@@ -63,4 +63,32 @@ class AdminInformationController extends Controller
 
         return redirect() -> back();
     }
+    public function edit($id) {
+        $viewData = [];
+        $adminFounds = User::findOrFail($id);
+        $viewData['title'] = "Edit Information";
+        $viewData['adminfounds'] = $adminFounds;
+        return view("admin.admin.edit") -> with("viewData", $viewData);
+
+    }
+    public function update(Request $request, $id) {
+        $request -> validate([
+            "name" => "required|max:255",
+            "email" => "required|email",
+            "password" => "required|min:8"
+        ]);
+
+        $adminUpdate =  User::findOrFail($id);
+        $adminUpdate -> setName($request -> input('name'));
+        $adminUpdate -> setEmail($request -> input('email'));
+        $adminUpdate -> setPassword(bcrypt($request -> input('password')));
+
+        $adminUpdate -> save();
+        return redirect() -> route("admin.admin.infor");
+
+    }
+    public function delete($id) {
+        User::destroy($id);
+        return redirect() -> back();
+    }
 }
