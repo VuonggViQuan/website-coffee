@@ -51,13 +51,31 @@ class Header extends React.Component {
                   <div className="col"></div>
                 </div>
               </div>
-              <NavLink className="navbar-brand text-white-50" to="/UserProfile">
-                <i className="bi bi-person" />
-              </NavLink>
-              <NavLink className="navbar-brand text-white-50" to="/Login">
-                <i className="bi bi-box-arrow-in-right"></i>
-              </NavLink>
+
+              <div className="btn-group dropleft me-5 border-0">
+                <button
+                  type="button"
+                  style={{ backgroundColor: "tomato" }}
+                  className="btn btn-secondary dropdown-toggle  border-0"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i className="bi bi-house me-1 " />
+                  Tài khoản
+                </button>
+                <div className="dropdown-menu">
+                  <NavLink to="/UserProfile" className=" dropdown-item">
+                    <i className="bi bi-person me-1 " />
+                    Thông tin cá nhân
+                  </NavLink>
+                  <a href="/#">
+                    <i className="bi bi-door-open-fill  dropdown-item" />
+                  </a>
+                </div>
+              </div>
             </nav>
+
             <div className=" text-white-50" id="abheader">
               <div className="row float-end">
                 <div className="col-auto">

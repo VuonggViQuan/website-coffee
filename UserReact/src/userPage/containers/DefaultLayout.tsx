@@ -15,9 +15,7 @@ const DefaultLayout = () => {
             <Route key={idx} path={route.path} element={route.component} />
           ))}
         </Routes>
-        {/* <Route path="" element={<Home/>}/>
-            <Route path="home" element={<Home/>}/>
-            <Route path="major" element={<Major/>}/> */}
+        {}
       </CartProvider>
       <Footer />
     </>

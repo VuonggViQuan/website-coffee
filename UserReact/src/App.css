@@ -93,3 +93,6 @@ a:hover {
 #footer {
   background-color: #350c5f;
 }
+button#tomato {
+  background-color: tomato;
+}

@@ -80,16 +80,7 @@ const Checkout = () => {
                       defaultValue=""
                     />
                   </div>
-                  <div className="col-md-12">
-                    <label htmlFor="kh_gioitinh">Giới tính</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="kh_gioitinh"
-                      id="kh_gioitinh"
-                      defaultValue=""
-                    />
-                  </div>
+
                   <div className="col-md-12">
                     <label htmlFor="kh_diachi">Địa chỉ</label>
                     <input
@@ -117,16 +108,6 @@ const Checkout = () => {
                       className="form-control"
                       name="kh_email"
                       id="kh_email"
-                      defaultValue=""
-                    />
-                  </div>
-                  <div className="col-md-12">
-                    <label htmlFor="kh_ngaysinh">Ngày sinh</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="kh_ngaysinh"
-                      id="kh_ngaysinh"
                       defaultValue=""
                     />
                   </div>
