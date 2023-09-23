@@ -24,20 +24,26 @@ Route::post("/admin/admins/authenticate", 'App\Http\Controllers\admin\AdminInfor
 // Account
 Route::post("/user/register", "App\Http\Controllers\user\UserAccountInformationController@register") -> name("user.create.account");
 Route::post("/user/login", 'App\Http\Controllers\user\UserAccountInformationController@authenticate') -> name("user.account.auth");
+Route::get("/user/login", 'App\Http\Controllers\user\UserAccountInformationController@authenticate') -> name("user.account.auth");
+
 
 Route::get("/users", 'App\Http\Controllers\user\UserInformationController@getAll') -> name("admin.user.getall");
 Route::post("/users/create", 'App\Http\Controllers\user\UserInformationController@createUser') -> name("admin.user.create");
 Route::get("/user/cart", 'App\Http\Controllers\user\CartController@index') -> name("admin.user.cart");
 Route::post("/user/cart/add/{id}", 'App\Http\Controllers\user\CartController@add') -> name("admin.user.cart.add");
-
-
 Route::get("/user/products", 'App\Http\Controllers\user\UserProductController@index') -> name("user.products");
 Route::get("/user/product/{id}", 'App\Http\Controllers\user\UserProductController@showProduct') -> name("user.product.show");
+
+
+// Admin
 Route::middleware('auth') -> group(function() {
     Route::get("/admin/home", 'App\Http\Controllers\AdminHomeController@index') -> name("admin.home");
     Route::get("/admin/admins", 'App\Http\Controllers\admin\AdminInformationController@index') -> name('admin.admin.infor');
     Route::get("/admin/admins/create", 'App\Http\Controllers\admin\AdminInformationController@createAdmin') -> name('admin.admin.create');
     Route::post("/admin/admins/store", 'App\Http\Controllers\admin\AdminInformationController@store') -> name("admin.admin.store");
+    Route::get("/admin/admins/edit/{id}", 'App\Http\Controllers\admin\AdminInformationController@edit') -> name("admin.admin.edit");
+    Route::post("/admin/admin/update/{id}", 'App\Http\Controllers\admin\AdminInformationController@update') -> name("admin.admin.update");
+    Route::get("/admin/admin/delete/{id}", 'App\Http\Controllers\admin\AdminInformationController@delete') -> name("admin.admin.delete");
 
     Route::get("/admin/user/edit/{id}", 'App\Http\Controllers\user\UserInformationController@edit') -> name("admin.user.edit");
     Route::put("/admin/user/update/{id}", 'App\Http\Controllers\user\UserInformationController@updateUser') -> name("admin.user.update");
