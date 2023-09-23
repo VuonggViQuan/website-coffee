@@ -1,46 +1,10 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import ResponseWrapper from './../services/responseWrapper';
-import { json } from "stream/consumers";
-import userService from "../services/userService";
+import { NavLink } from "react-router-dom";
+import React from "react";
 
-export default function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
-    const handleSubmit = (e: any) => {
-      e.preventDefault();
-      const userInformation = {email, password};
-      userService.login(email, password).then((res) => {   
-        // console.log(res.errorCode);
-        if(res.errorCode === 0) {
-          console.log(res.data);
-          alert("Login successfully!");
-          navigate("/")   
-        }else {
-          console.log(res)
-          alert("Wrong email or password! Please try again")
-        }
-      })
-      // fetch("http://127.0.0.1:8000/user/login", {
-      //   method: "POST",
-      //   headers: {"Content-Type": "application/json"},
-      //   body: JSON.stringify(userInformation)
-      // }).then((rs) => {
-        
-      //     console.log(rs.json);
-      // })
-      // .catch(() => {
-      //   alert("Incorrect email or password! Please try again");
-      //   navigate("/login")
-      // })
-    
-     
-
-    }
-   
+class Login extends React.Component {
+  render() {
     return (
-      <section className="vh-100" style={{ backgroundColor: "#612f3a" }}>
+      <section className="" style={{ backgroundColor: "#612f3a" }}>
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
@@ -56,7 +20,7 @@ export default function Login() {
                   </div>
                   <div className="col-md-6 col-lg-7 d-flex align-items-center">
                     <div className="card-body p-4 p-lg-5 text-black">
-                      <form method="post" onSubmit={handleSubmit}>
+                      <form>
                         <div className="d-flex align-items-center mb-3 pb-1">
                           <img
                             src={require("../images/zyro-image.png")}
@@ -77,14 +41,12 @@ export default function Login() {
                             className="form-label"
                             htmlFor="form2Example17"
                           >
-                            Email
+                            Tên đăng nhập
                           </label>
                           <input
-                            name="email"
                             type="email"
                             id="form2Example17"
                             className="form-control form-control-lg"
-                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
                         <div className="form-outline mb-4">
@@ -95,22 +57,19 @@ export default function Login() {
                             Mật khẩu
                           </label>
                           <input
-                            name="password"
                             type="password"
                             id="form2Example27"
                             className="form-control form-control-lg"
-                            onChange={(e) => setPassword(e.target.value)}
                           />
                         </div>
                         <div className="my-2">
                           <button
                             className="btn btn-dark btn-lg btn-block col-3"
-                            type="submit"
+                            type="button"
                           >
-                            Đăng Nhập
-                            {/* <NavLink to="/" className="text-white">
+                            <NavLink to="/" className="text-white">
                               Đăng nhập
-                            </NavLink> */}
+                            </NavLink>
                           </button>
                         </div>
                         <a className="small text-muted" href="#!">
@@ -134,6 +93,6 @@ export default function Login() {
       </section>
     );
   }
+}
 
-
-// export default Login;
+export default Login;

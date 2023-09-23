@@ -51,6 +51,9 @@ class Header extends React.Component {
                   <div className="col"></div>
                 </div>
               </div>
+              <NavLink className="navbar-brand text-white-50" to="/UserProfile">
+                <i className="bi bi-person" />
+              </NavLink>
               <NavLink className="navbar-brand text-white-50" to="/Login">
                 <i className="bi bi-box-arrow-in-right"></i>
               </NavLink>

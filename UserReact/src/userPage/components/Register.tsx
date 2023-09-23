@@ -1,28 +1,8 @@
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import React from "react";
 
-export default function Register() {
-
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
-    const handleSubmit = (e: any) => { 
-      e.preventDefault();
-      const userInformation = {name, email, password};
-      console.log(userInformation);
-      fetch("http://127.0.0.1:8000/user/register", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(userInformation)
-      })
-      .then(() => {
-        alert(JSON.stringify(userInformation))
-        navigate("/")
-      })
-      
-
-    }
+class Register extends React.Component {
+  render() {
     return (
       <section className="" style={{ backgroundColor: "#612f3a" }}>
         <div className="container py-5 h-100">
@@ -40,7 +20,7 @@ export default function Register() {
                   </div>
                   <div className="col-md-6 col-lg-7 d-flex align-items-center">
                     <div className="card-body p-4 p-lg-5 text-black">
-                      <form method="post" onSubmit={handleSubmit}>
+                      <form>
                         <div className="d-flex align-items-center mb-3 pb-1">
                           <img
                             src={require("../images/zyro-image.png")}
@@ -58,37 +38,30 @@ export default function Register() {
                         </h3>
                         <div className="form-outline mb-4">
                           <input
-                            name="name"
-                            type="text"
+                            type="email"
                             id="form2Example17"
                             className="form-control form-control-lg"
                             placeholder="Tên đăng nhập"
-                            onChange={(e) => setName(e.target.value)}
                           />
                         </div>
                         <div className="form-outline mb-4 text-secondary ">
                           <input
-                            name="email"
                             type="email"
                             id="form2Example17"
                             className="form-control form-control-lg"
                             placeholder="Email"
-                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
                         <div className="form-outline mb-4 text-secondary ">
                           <input
-                            name="password"
                             type="password"
                             id="form2Example27"
                             className="form-control form-control-lg"
                             placeholder="Mật khẩu"
-                            onChange={(e) => setPassword(e.target.value)}
                           />
                         </div>
                         <div className="form-outline mb-4 text-secondary ">
                           <input
-                            name="confirmpassword"
                             type="password"
                             id="form2Example27"
                             className="form-control form-control-lg"
@@ -99,13 +72,11 @@ export default function Register() {
                         <div className="my-2">
                           <button
                             className="btn btn-dark btn-lg btn-block col-3"
-                            type="submit"
-                            // onClick={handleSubmit}
+                            type="button"
                           >
-                            Đăng ký
-                            {/* <NavLink to="/" className="text-white">
+                            <NavLink to="/" className="text-white">
                               Đăng ký
-                            </NavLink> */}
+                            </NavLink>
                           </button>
                         </div>
                       </form>
@@ -119,6 +90,6 @@ export default function Register() {
       </section>
     );
   }
+}
 
-
-// export default Register;
+export default Register;
