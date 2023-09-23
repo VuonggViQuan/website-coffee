@@ -6,6 +6,8 @@ import Product from "./pages/Product";
 import About from "./pages/About";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import UserProfile from "./pages/UserProfile";
+import ResetPassword from "./pages/ResetPassword";
 
 const routes = [
   { path: "", component: <Home /> },
@@ -16,6 +18,8 @@ const routes = [
   { path: "contact", component: <Contact /> },
   { path: "about", component: <About /> },
   { path: "login", component: <Login /> },
+  { path: "userprofile", component: <UserProfile /> },
+  { path: "resetpassword", component: <ResetPassword /> },
   { path: "register", component: <Register /> },
 ];
 export default routes;
