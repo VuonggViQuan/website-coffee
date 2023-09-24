@@ -1,28 +1,45 @@
-import React from "react";
+import { stringify } from "querystring";
+import React, { useEffect, useState } from "react";
 import { useCart } from "react-use-cart";
+import { json } from "stream/consumers";
 
 // import { NavLink } from "react-router-dom";
+import Cart from './Cart';
+import { useNavigate } from "react-router-dom";
+
 
 const Item = (props: any) => {
   const { addItem } = useCart();
+
+  const navigate = useNavigate();
+
+  const handleShowProduct = (id: any) => {
+    fetch("http://127.0.0.1:8000/user/product/" + id , {
+      method: "POST",
+      headers: {"Accept":"application/json","Content-Type": "application/json"}
+    }).then(() => {
+      navigate(`/details/${id}`);
+    })
+  }
 
   return (
     <>
       <div className="col-lg-3 mb-3 ">
         <div className="card p-0 overflow-hidden h-90 w-75  shadow">
-          <img src={props.img} className="card-img-top img-fluid" alt="" />
+          <img src= {require(`../drink/${props.img}`)} style={{ height: 250, }} className="card-img-top img-fluid" alt="drink" />
           <div className="card-body text-center">
-            <h5 className="card-title">{props.title}</h5>
+            <h5 className="card-title">{props.name}</h5>
             <h5 className="card-text">{props.price} vnd</h5>
-            <p className="card-text">{props.desc}</p>
+            <p className="card-text">{props.description}</p>
             <button
               className="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal2"
+              onClick={() => handleShowProduct(props.id)}
+              type="button"
             >
               Chi tiết sản phẩm
             </button>
           </div>
+          
           <button
             className="btn btn-primary"
             onClick={() => addItem(props.item)}
@@ -32,7 +49,7 @@ const Item = (props: any) => {
             Thêm vào Giỏ Hàng
           </button>
 
-          {/* Modal */}
+     
           <div
             className="modal fade"
             id="exampleModal"
@@ -78,8 +95,7 @@ const Item = (props: any) => {
             </div>
           </div>
 
-          {/* Modal2 */}
-          <div
+          {/* <div
             className="modal fade col-auto"
             id="exampleModal2"
             tabIndex={-1}
@@ -143,7 +159,7 @@ const Item = (props: any) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
