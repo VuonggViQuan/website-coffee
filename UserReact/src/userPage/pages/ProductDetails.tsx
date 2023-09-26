@@ -4,39 +4,77 @@ import { useParams } from 'react-router-dom';
 import Products from '../interface/Product';
 import Product from './Product';
 import { json } from 'stream/consumers';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import userService from '../services/userService';
 
 export default function ProductDetails() {
+    const responsive = {
+        superLargeDesktop: {
+          // the naming can be any, depends on you.
+          breakpoint: { max: 4000, min: 3000 },
+          items: 5
+        },
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 3
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 1
+        }
+      };
     const [id, setId] = useState<any | null>(0);
-    const [data, setData]= useState<Products>({});
+    const [dataProductId, setDataProductId]= useState<Products>({});
+    const [dataAllProducts, setDataAllProducts] = useState<Products[]>([]);
     const param = useParams();
     
     useEffect(() => {
-    //    setId(param.id);
-       fetch("http://localhost:8000/user/product/" + param.id, {
-        method: "GET",
-        headers: {"Accept":"application/json", "Content-Type": "application/json"}
-       }).then((response) => response.json())
-         .then((result) => {
-            setData(result);
-         })
+        fetch("http://localhost:8000/user/products", {
+                method: "GET",
+                headers: {"Accept":"application/json", "Content-Type": "application/json"}
+            }).then((res) => res.json()).then((result) => {
+                console.log(result)
+                setDataAllProducts(result);
+            })
+        fetch("http://localhost:8000/user/product/" + param.id, {
+                method: "GET",
+                headers: {"Accept":"application/json", "Content-Type": "application/json"}
+        }).then((response) => response.json())
+            .then((result) => {
+                setDataProductId(result);
+            })
        
     },[param.id]) 
-    // console.log(data); 
     return(
         <>
-            <div className="card mb-3">
+            <div className="card mb-3 p-5">
                 <div className="row g-0">
                     <div className="col-md-4">
-                        <img alt='drinks' src={require(`../drink/${data?.image ? data?.image : "dua-hau.jpg" }`)} className="img-fluid rounded-start" />
+                        <img alt='drinks' src={require(`../drink/${dataProductId?.image ? dataProductId?.image : "dua-hau.jpg" }`)} className="img-fluid rounded-start" />
+                        <Carousel responsive={responsive}>
+                            {dataAllProducts.map((product) => (
+                                <div className='mt-3 border d-flex ms-3 w-75'>
+                                    <a href="">
+                                        <img style={{ height: 125 }} className='img-fluid img-profile' src={require(`../drink/${product?.image}`)} alt="" />
+                                    </a>     
+                                </div> 
+                            ))}
+                            
+                        </Carousel>
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
                             <h5 className="card-title fs-4 fw-bold">
-                                {data.name}
+                                {dataProductId.name}
                             </h5>
-                            <p className="card-text">{data.description}</p>
+                            <p className="card-text">{dataProductId.description}</p>
                             <p className="card-text fw-bold">
-                                {data.price}VND
+                                {dataProductId.price}VND
                             </p>
                             <form action="/cart" method="post">
                             <div className="row">
@@ -60,6 +98,7 @@ export default function ProductDetails() {
                     </div>
                 </div>
         </div>
+      
 
         </>
     )
