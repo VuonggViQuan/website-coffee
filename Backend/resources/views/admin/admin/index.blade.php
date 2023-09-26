@@ -11,6 +11,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Information ID</th>
                 {{--  <th>Password</th>  --}}
                 <th>Action</th>
             </tr>
@@ -21,13 +22,17 @@
                     <td>{{ $admin -> getId() }}</td>
                     <td>{{ $admin -> getName() }}</td>
                     <td>{{ $admin -> getEmail() }}</td>
-                    {{--  <td>{{ $viewData['getdecodepw'] }}</td>  --}}
+                    <td>
+                        <a href="{{ route('admin.admin.showinfo', ['id' => $admin -> getId()]) }}">
+                            {{ $admin -> getId() }}
+                        </a>
+                    </td>
                     <td class="d-flex">
                         <div class="col">
-                            <a href="#">
+                            <a href="{{ route('admin.admin.edit', ['id'=> $admin -> getId()]) }}">
                                 <i class="fa-solid fa-pen-to-square text-success fs-5"></i>
                             </a>
-                            <a href="#">
+                            <a href="{{ route('admin.admin.delete', ['id' => $admin -> getId()]) }}">
                                 <i class="fa-solid fa-trash text-danger fs-5"></i>
                             </a>
                         </div>
