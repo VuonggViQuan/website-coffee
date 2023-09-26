@@ -129,8 +129,9 @@
                       <div class=" fw-bold py-2 collapse-inner rounded">
                           {{--  <h6 class="collapse-header">Custom Components:</h6>  --}}
                           <a class="collapse-item text-secondary-emphasis" href="{{ route('admin.product.index') }}">Products</a>
-                          <a class="collapse-item text-secondary-emphasis" href="{{ route('admin.admin.infor') }}">Admin</a>
-                          <a class="collapse-item text-secondary-emphasis" href="{{ route('admin.user.getall', ['id'=>1]) }}">Users</a>
+                          <a class="collapse-item text-secondary-emphasis" href="{{ route('admin.admin.accountinfor') }}">Admin</a>
+                          <a class="collapse-item text-secondary-emphasis" href="{{ route('admin.user.getall') }}">Users</a>
+                          <a class="collapse-item text-secondary-emphasis" href="{{ route('admin.user.cart') }}">Orders</a>
                       </div>
                   </div>
               </li>
@@ -334,7 +335,7 @@
                           <div class="topbar-divider d-none d-sm-block"></div>
 
                           <!-- Nav Item - User Information -->
-                          <li class="nav-item dropdown no-arrow">
+                          <li class="nav-item dropdown no-arrow me-2">
                               <a class="nav-link dropdown-toggle text-dark fw-bold" href="#" id="userDropdown" role="button"
                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   {{Auth::check() ? Auth::user() -> name : '' }}
@@ -346,6 +347,7 @@
 
                               <!-- Dropdown - User Information -->
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('admin.admin.createinfo') }}">Update Information</a>
                                 <a class="dropdown-item" href="{{ route('admin.login') }}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
