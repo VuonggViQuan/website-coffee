@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserInformation;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,6 +90,47 @@ class AdminInformationController extends Controller
     }
     public function delete($id) {
         User::destroy($id);
+        return redirect() -> back();
+    }
+    public function createForm() {
+        $viewData = [];
+        $viewData['title'] = "Update Information";
+        return view("admin.admin.createinfor") -> with("viewData", $viewData);
+    }
+    public function showInfor($id) {
+        $viewData = [];
+        $getAdminInfor = UserInformation::all() -> where('admin_account_id', $id);
+        $viewData['title'] = "Admin's Information";
+        $viewData['admininformation'] = $getAdminInfor;
+        $viewData['tablename'] = "Admin Information";
+
+        return view("admin.admin.showinfor") -> with("viewData", $viewData);
+
+    }
+    public function storeInfor(Request $request) {
+        $request -> validate([
+            "name" => "required|max:255",
+            "email" => "required|email|max:255",
+            "address" => "required|max:50",
+            "dob" => "required",
+            "phone" => "required|min:10",
+            "gender" => "required",
+        ]);
+        $currentUser = Auth::user() -> getAuthIdentifier();
+        $userInfo = new UserInformation();
+        $userInfo -> setAdminAccountId($currentUser);
+        $userInfo -> setName($request -> input('name'));
+        $userInfo -> setEmail($request -> input('email'));
+        $userInfo -> setAddress($request -> input('address'));
+        $userInfo -> setDob($request -> input('dob'));
+        $userInfo -> setPhone($request -> input('phone'));
+        $userInfo -> setGender($request -> input('gender'));
+
+        $userInfo -> save();
+        return redirect() -> route("admin.home");
+    }
+    public function deleteInfor($id) {
+        UserInformation::destroy($id);
         return redirect() -> back();
     }
 }
