@@ -4,20 +4,21 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserAccountInformation;
 use App\Models\UserInformation;
 use Illuminate\Http\Request;
 
 class UserInformationController extends Controller
 {
-    public function getAll() {
-        $viewData = [];
-        $getAllUser = UserInformation::all();
-        $viewData['title'] = "Users Information";
-        $viewData['tablename'] = "Users Table";
-        $viewData['usersinfor'] = $getAllUser;
-        // return json_decode($getAllUser);
-        return view("admin.user.index") -> with('viewData', $viewData);
-    }
+    // public function getAll() {
+    //     $viewData = [];
+    //     $getAllUser = UserInformation::all();
+    //     $viewData['title'] = "Users Information";
+    //     $viewData['tablename'] = "Users Table";
+    //     $viewData['usersinfor'] = $getAllUser;
+    //     // return json_decode($getAllUser);
+    //     return view("admin.user.index") -> with('viewData', $viewData);
+    // }
     public function createUser(Request $request) {
         $request -> validate([
             "id" => "required",
@@ -72,7 +73,7 @@ class UserInformationController extends Controller
 
         $userFoundedForUpdate -> save();
         // return json_decode($userFoundedForUpdate);
-        return redirect() -> back();
+        return redirect() -> route('admin.products.index');
 
     }
     public function delete($id) {

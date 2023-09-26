@@ -57,4 +57,21 @@ class UserAccountInformationController extends Controller
             ];
         }
     }
+    public function getAll() {
+        $viewData = [];
+        $viewData['title'] = "Users Account Information";
+        $getAllUserAccount = UserAccountInformation::all();
+        $viewData['tablename'] = "Users Table";
+        $viewData['usersinfor'] = $getAllUserAccount;
+        return view("admin.user.index") -> with("viewData", $viewData);
+    }
+    public function showInfor($id) {
+        $viewData = [];
+        $getUserInfoById = UserAccountInformation::all() -> where('user_account_id', $id);
+        $viewData['title'] = "User Information";
+        $viewData['tablename'] = "Users Information Table";
+        $viewData['userinformation'] = $getUserInfoById;
+
+        return view("admin.user.showinfor") -> with("viewData", $viewData);
+    }
 }

@@ -10,5 +10,9 @@ class UserProductController extends Controller
 {
     public function index() {
         return Product::all();
+
+    }
+    public function showProduct($id) {
+        return Product::findOrFail($id);
     }
 }
