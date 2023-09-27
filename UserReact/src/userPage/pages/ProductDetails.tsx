@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Products from '../interface/Product';
 import Product from './Product';
 import { json } from 'stream/consumers';
@@ -32,7 +32,18 @@ export default function ProductDetails() {
     const [dataProductId, setDataProductId]= useState<Products>({});
     const [dataAllProducts, setDataAllProducts] = useState<Products[]>([]);
     const param = useParams();
-    
+    const navigate = useNavigate();
+
+    const handleShowProduct = (id: any) => {
+        fetch("http://127.0.0.1:8000/user/product/" + id , {
+          method: "POST",
+          headers: {"Accept":"application/json","Content-Type": "application/json"}
+        }).then((rs) => {
+          console.log(rs);  
+          navigate(`/details/${id}`);
+        })
+      }
+
     useEffect(() => {
         fetch("http://localhost:8000/user/products", {
                 method: "GET",
@@ -55,13 +66,14 @@ export default function ProductDetails() {
             <div className="card mb-3 p-5">
                 <div className="row g-0">
                     <div className="col-md-4">
-                        <img alt='drinks' src={require(`../drink/${dataProductId?.image ? dataProductId?.image : "dua-hau.jpg" }`)} className="img-fluid rounded-start" />
+                        <img alt='drinks' src={require(`../drink/${dataProductId?.image ? dataProductId?.image : "dua-hau.jpg" }`)} className="img-fluid rounded-start rounded-3 border border-3" />
                         <Carousel responsive={responsive}>
-                            {dataAllProducts.map((product) => (
-                                <div className='mt-3 border d-flex ms-3 w-75'>
-                                    <a href="">
+                            {dataAllProducts.map((product, index) => (
+                                <div className='mt-3 d-grid ms-3 w-75'>
+                                    <a className='border border-1 border-success' href='#' onClick={() => handleShowProduct(product.id)}>
                                         <img style={{ height: 125 }} className='img-fluid img-profile' src={require(`../drink/${product?.image}`)} alt="" />
-                                    </a>     
+                                    </a>
+                                    <p className='text-secondary fw-bold text-center'>{product.name}</p>  
                                 </div> 
                             ))}
                             
@@ -88,7 +100,9 @@ export default function ProductDetails() {
                                 </div>
                                 <div className="col-auto">
                                 {/* <button className="btn btn-primary text-white" >Add to cart</button> */}
-                                <a href="/cart" className='btn btn-success text-white fw-bold'>Add to cart</a>
+                                <a href="/cart" className='btn btn-success text-white fw-bold'>
+                                    Add to cart
+                                </a>
                                 </div>
                             </div>
                             </form>

@@ -16,14 +16,16 @@ const Product1 = () => {
   },[])
   return (
     <>
-      <h3 className="text-center text-danger h1 py-2">Sản Phẩm</h3>
+      <h3 className="text-center text-danger fw-bold h1 py-2">Sản Phẩm</h3>
 
       <section className="container-fluid ">
         <div className="bg-dark py-2">
-          <h5 className="text-white m-2">Menu</h5>
+          <h5 className="text-white m-2">
+           <p className="fs-2 text-center fw-bold">Coffee</p>
+          </h5>
         </div>
-        <div className="row m-1">
-          {products.map((item, index) => {
+        <div className="row m-1 mt-3">
+          {products.filter(prodduct => prodduct.type === "CF").map((item, index) => {
             return (
               <Item
                 id = {item.id}
@@ -34,7 +36,50 @@ const Product1 = () => {
                 item={item}
                 key={index}
               />
-              // <h1>{item}</h1>
+            );
+          })}
+        </div>
+      </section>
+      <section className="container-fluid ">
+        <div className="bg-dark py-2">
+          <h5 className="text-white m-2">
+           <p className="fs-2 text-center fw-bold">Juice</p>
+          </h5>
+        </div>
+        <div className="row m-1 mt-3">
+          {products.filter(prodduct => prodduct.type === "NE").map((item, index) => {
+            return (
+              <Item
+                id = {item.id}
+                img={item.image}
+                name={item.name}
+                description={item.description}
+                price={item.price}
+                item={item}
+                key={index}
+              />
+            );
+          })}
+        </div>
+      </section>
+      <section className="container-fluid ">
+        <div className="bg-dark py-2">
+          <h5 className="text-white m-2">
+           <p className="fs-2 text-center fw-bold">Milk Tea</p>
+          </h5>
+        </div>
+        <div className="row m-1 mt-3">
+          {products.filter(prodduct => prodduct.type === "TS").map((item, index) => {
+            return (
+              <Item
+                id = {item.id}
+                img={item.image}
+                name={item.name}
+                description={item.description}
+                price={item.price}
+                item={item}
+                key={index}
+              />
             );
           })}
         </div>
